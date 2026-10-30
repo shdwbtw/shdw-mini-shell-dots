@@ -1,0 +1,602 @@
+/**
+ * @name          Mini Shell Theme
+ * @version       0.1
+ * @description   Auto generated mini shell theme for discord (colors by matugen)
+ * @author        shdw
+ */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap");
+.visual-refresh.theme-dark, .visual-refresh .theme-dark {
+  --__header-bar-background:    {{colors.surface_container.default.hex}}     !important;
+  --background-surface-high:    {{colors.surface_container_low.default.hex}}   !important;
+  --background-surface-higher:  {{colors.surface_container.default.hex}}     !important;
+  --background-surface-highest: {{colors.surface_container_high.default.hex}}     !important;
+  --background-base-lowest:     {{colors.surface_container_lowest.default.hex}} !important;
+  --background-base-lower:      {{colors.surface.default.hex}}     !important;
+  --background-base-low:        {{colors.surface_container_low.default.hex}}   !important;
+  --bg-surface-raised:          {{colors.surface_container.default.hex}};
+  --background-gradient-highest: {{colors.surface_container_low.default.hex}};
+  --background-secondary-alt:   {{colors.surface_container.default.hex}}     !important;
+  --background-accent:          {{colors.surface_container_high.default.hex}}     !important;
+  --background-mod-muted:         {{colors.surface_container_high.default.rgba | set_alpha: 0.05}};
+  --background-mod-normal:        {{colors.surface_container_high.default.rgba | set_alpha: 0.15}};
+  --background-mod-subtle:        {{colors.surface_container_high.default.rgba | set_alpha: 0.25}} !important;
+  --background-mod-strong:        {{colors.surface_container_high.default.rgba | set_alpha: 0.45}} !important;
+  --app-frame-background:     {{colors.surface_container_lowest.default.hex}};
+  --home-background:          {{colors.surface_container_low.default.hex}};
+  --chat-background:          {{colors.surface_container_low.default.hex}};
+  --chat-background-default:  {{colors.surface_container_low.default.hex}};
+  --chat-border:              {{colors.surface_container_lowest.default.hex}};
+  --chat-text-muted:          {{colors.outline.default.hex}};
+  --card-background-default:               {{colors.surface_container.default.hex}}     !important;
+  --custom-channel-members-bg:             {{colors.surface.default.hex}};
+  --custom-status-bubble-background:       {{colors.surface_container_lowest.default.hex}} !important;
+  --custom-status-bubble-background-color: {{colors.surface.default.hex}}     !important;
+  --border-subtle: {{colors.surface_container_low.default.hex}} !important;
+  --border-muted:  {{colors.surface_container.default.hex}};
+  --border-normal: {{colors.surface_container_lowest.default.hex}};
+  --border-strong: {{colors.surface.default.hex}};
+  --text-muted:       {{colors.outline.default.hex}}    !important;
+  --text-link:        {{colors.primary.default.hex}} !important;
+  --text-default:     {{colors.on_surface.default.hex}};
+  --text-strong:      {{colors.on_surface.default.hex}}    !important;
+  --text-subtle:      {{colors.on_surface_variant.default.hex}};
+  --text-brand:       {{colors.primary.default.hex}};
+  --text-feedback-positive: #b8bb26;
+  --text-feedback-critical: #fb4934;
+  --text-feedback-warning:  #fabd2f;
+  --text-feedback-info:     {{colors.primary.default.hex}};
+  --text-status-online:  #b8bb26;
+  --text-status-idle:    #fabd2f;
+  --text-status-dnd:     #fb4934;
+  --text-status-offline: {{colors.outline.default.hex}};
+  --interactive-muted:  {{colors.surface_container_highest.default.hex}};
+  --interactive-icon-default:        {{colors.on_surface.default.hex}} !important;
+  --interactive-icon-hover:          {{colors.on_surface.default.hex}};
+  --interactive-icon-active:         {{colors.on_surface.default.hex}};
+  --interactive-text-default:        {{colors.on_surface.default.hex}} !important;
+  --interactive-text-hover:          {{colors.on_surface.default.hex}};
+  --interactive-text-active:         {{colors.on_surface.default.hex}};
+  --interactive-background-hover:    {{colors.surface_container_high.default.rgba | set_alpha: 0.15}};
+  --interactive-background-selected: {{colors.surface_container_high.default.rgba | set_alpha: 0.2}};
+  --interactive-background-active:   {{colors.on_surface.default.rgba | set_alpha: 0.17}};
+  --channels-default:              {{colors.outline.default.hex}}   !important;
+  --channel-icon:                  {{colors.outline.default.hex}}   !important;
+  --channel-text-area-placeholder: {{colors.on_surface.default.rgba | set_alpha: 0.5}};
+  --channeltextarea-background:    {{colors.surface.default.hex}};
+  --control-brand-foreground:     {{colors.primary.default.hex}};
+  --control-brand-foreground-new: {{colors.primary.default.hex}};
+  --brand-100: {{colors.primary_fixed.default.hex}};
+  --brand-130: {{colors.primary_fixed.default.hex}};
+  --brand-160: {{colors.primary_fixed.default.hex}};
+  --brand-200: {{colors.primary_fixed_dim.default.hex}};
+  --brand-230: {{colors.primary_fixed_dim.default.hex}};
+  --brand-260: {{colors.primary_fixed_dim.default.hex}};
+  --brand-300: {{colors.primary_fixed_dim.default.hex}};
+  --brand-330: {{colors.primary_fixed_dim.default.hex}};
+  --brand-360: {{colors.primary_fixed_dim.default.hex}};
+  --brand-400: {{colors.primary.default.hex}};
+  --brand-430: {{colors.primary.default.hex}};
+  --brand-460: {{colors.primary.default.hex}};
+  --brand-500: {{colors.primary.default.hex}} !important;
+  --brand-530: {{colors.primary.default.hex}};
+  --brand-560: {{colors.primary_container.default.hex}};
+  --brand-600: {{colors.primary.default.hex}};
+  --brand-630: {{colors.inverse_primary.default.hex}};
+  --brand-660: {{colors.inverse_primary.default.hex}};
+  --brand-700: {{colors.on_primary_fixed_variant.default.hex}};
+  --brand-730: {{colors.on_primary_fixed_variant.default.hex}};
+  --brand-760: {{colors.on_primary_container.default.hex}};
+  --brand-800: {{colors.on_primary.default.hex}};
+  --brand-830: {{colors.on_primary.default.hex}};
+  --brand-860: {{colors.on_primary_fixed.default.hex}};
+  --brand-900: {{colors.on_primary_fixed.default.hex}};
+  --brand-05a: {{colors.primary.default.rgba | set_alpha: 0.05}};
+  --brand-10a: {{colors.primary.default.rgba | set_alpha: 0.1}};
+  --brand-15a: {{colors.primary.default.rgba | set_alpha: 0.15}};
+  --brand-20a: {{colors.primary.default.rgba | set_alpha: 0.2}};
+  --brand-25a: {{colors.primary.default.rgba | set_alpha: 0.25}};
+  --brand-30a: {{colors.primary.default.rgba | set_alpha: 0.3}};
+  --brand-35a: {{colors.primary.default.rgba | set_alpha: 0.35}};
+  --brand-40a: {{colors.primary.default.rgba | set_alpha: 0.4}};
+  --brand-45a: {{colors.primary.default.rgba | set_alpha: 0.45}};
+  --brand-50a: {{colors.primary.default.rgba | set_alpha: 0.5}};
+  --brand-55a: {{colors.primary.default.rgba | set_alpha: 0.55}};
+  --brand-60a: {{colors.primary.default.rgba | set_alpha: 0.6}};
+  --brand-65a: {{colors.primary.default.rgba | set_alpha: 0.65}};
+  --brand-70a: {{colors.primary.default.rgba | set_alpha: 0.7}};
+  --brand-75a: {{colors.primary.default.rgba | set_alpha: 0.75}};
+  --brand-80a: {{colors.primary.default.rgba | set_alpha: 0.8}};
+  --brand-85a: {{colors.primary.default.rgba | set_alpha: 0.85}};
+  --brand-90a: {{colors.primary.default.rgba | set_alpha: 0.9}};
+  --brand-95a: {{colors.primary.default.rgba | set_alpha: 0.95}};
+  --opacity-blurple-8:  {{colors.primary.default.rgba | set_alpha: 0.08}};
+  --opacity-blurple-16: {{colors.primary.default.rgba | set_alpha: 0.16}};
+  --opacity-blurple-24: {{colors.primary.default.rgba | set_alpha: 0.24}};
+  --opacity-blurple-32: {{colors.primary.default.rgba | set_alpha: 0.32}};
+  --opacity-blurple-60: {{colors.primary.default.rgba | set_alpha: 0.6}};
+  --blurple-50:         {{colors.primary_container.default.hex}};
+  --blurple-60:         {{colors.primary_fixed_dim.default.hex}};
+  --control-primary-background-default: {{colors.primary_container.default.hex}};
+  --control-primary-background-hover:   {{colors.primary.default.hex}};
+  --control-primary-background-active:  {{colors.primary.default.hex}};
+  --control-secondary-background-default: {{colors.surface_container_high.default.hex}} !important;
+  --control-secondary-background-hover:   {{colors.surface_container_highest.default.hex}};
+  --control-secondary-background-active:  {{colors.surface_container_highest.default.hex}};
+  --control-secondary-border-default:     {{colors.surface_container_high.default.hex}};
+  --control-secondary-text-default:       {{colors.on_surface.default.hex}} !important;
+  --control-secondary-text-hover:         {{colors.on_surface.default.hex}};
+  --control-critical-primary-background-default:   {{colors.error_container.default.hex}};
+  --control-critical-primary-background-hover:     #fb4934;
+  --control-critical-primary-background-active:    #fb4934;
+  --control-critical-primary-text-default:         {{colors.surface_container_lowest.default.hex}};
+  --control-critical-primary-text-hover:           {{colors.surface_container_lowest.default.hex}};
+  --control-critical-secondary-background-default: transparent;
+  --control-critical-secondary-background-hover:   rgba(251, 73, 52, 0.15);
+  --control-critical-secondary-background-active:  rgba(251, 73, 52, 0.2);
+  --control-critical-secondary-border-default:     #fb4934;
+  --control-critical-secondary-border-hover:       #fb4934;
+  --control-critical-secondary-border-active:      #fb4934;
+  --control-critical-secondary-text-default:       {{colors.on_surface.default.hex}};
+  --control-critical-secondary-text-hover:         {{colors.surface_container_lowest.default.hex}};
+  --control-critical-secondary-text-active:        {{colors.surface_container_lowest.default.hex}};
+  --control-connected-background-default: #b8bb26;
+  --control-connected-background-hover:   #cdd02a;
+  --control-connected-background-active:  #b8bb26;
+  --control-connected-border-default:     #b8bb26;
+  --control-connected-border-hover:       #cdd02a;
+  --control-connected-border-active:      #cdd02a;
+  --button-outline-primary-text:           {{colors.on_surface.default.hex}};
+  --button-outline-brand-text:             {{colors.on_surface.default.hex}};
+  --button-outline-brand-background-hover: {{colors.primary.default.rgba | set_alpha: 0.3}};
+  --button-outline-brand-border-active:    {{colors.primary.default.hex}};
+  --status-positive:            #b8bb26;
+  --status-positive-background: #b8bb26;
+  --status-positive-text:       {{colors.surface_container_lowest.default.hex}};
+  --status-warning:             #fabd2f;
+  --status-warning-background:  #fabd2f;
+  --status-warning-text:        {{colors.surface_container_lowest.default.hex}};
+  --status-danger:              #fb4934;
+  --icon-status-online:  #b8bb26;
+  --icon-status-idle:    #fabd2f;
+  --icon-status-dnd:     #fb4934;
+  --icon-status-offline: {{colors.outline.default.hex}};
+  --background-feedback-positive:     rgba(184, 187, 38, 0.15);
+  --background-feedback-warning:      rgba(250, 189, 47, 0.15);
+  --background-feedback-critical:     rgba(251, 73, 52, 0.15);
+  --background-feedback-info:         {{colors.primary.default.rgba | set_alpha: 0.15}};
+  --background-feedback-notification: #fb4934;
+  --badge-notification-background:    #fb4934;
+  --icon-feedback-positive:     #b8bb26;
+  --icon-feedback-warning:      #fabd2f;
+  --icon-feedback-critical:     #fb4934;
+  --icon-feedback-info:         {{colors.primary.default.hex}};
+  --icon-feedback-notification: #fb4934;
+  --notice-background-critical: #fb4934;
+  --notice-background-info:     {{colors.primary.default.hex}};
+  --notice-background-positive: #b8bb26;
+  --notice-background-warning:  #fabd2f;
+  --notice-text-critical:       {{colors.surface_container_lowest.default.hex}};
+  --notice-text-info:           {{colors.surface_container_lowest.default.hex}};
+  --notice-text-positive:       {{colors.surface_container_lowest.default.hex}};
+  --notice-text-warning:        {{colors.surface_container_lowest.default.hex}};
+  --mention-foreground:           {{colors.tertiary.default.hex}};
+  --mention-background:           {{colors.tertiary.default.rgba | set_alpha: 0.3}};
+  --message-mentioned-background-default: {{colors.tertiary.default.rgba | set_alpha: 0.07}};
+  --message-mentioned-background-hover:   {{colors.tertiary.default.rgba | set_alpha: 0.05}};
+  --message-automod-background-default:   {{colors.error.default.rgba | set_alpha: 0.05}};
+  --message-automod-background-hover:     {{colors.error.default.rgba | set_alpha: 0.1}};
+  --message-highlight-background-default: {{colors.tertiary.default.rgba | set_alpha: 0.08}};
+  --message-highlight-background-hover:   {{colors.tertiary.default.rgba | set_alpha: 0.06}};
+  --message-reacted-background-default:   {{colors.primary.default.rgba | set_alpha: 0.3}} !important;
+  --message-reacted-text-default:         {{colors.primary.default.hex}};
+  --message-background-hover:             {{colors.surface_container_lowest.default.rgba | set_alpha: 0.15}} !important;
+  --background-code:             {{colors.surface_container_lowest.default.hex}};
+  --spoiler-revealed-background: {{colors.surface_container.default.hex}};
+  --spoiler-hidden-background:   {{colors.surface_container_high.default.hex}};
+  --__spoiler-background-color--hidden: {{colors.surface_container_high.default.hex}};
+  --__spoiler-warning-background-color: {{colors.surface_container_highest.default.hex}};
+  --input-background-default:       {{colors.surface.default.hex}};
+  --input-text-default:             {{colors.on_surface.default.hex}};
+  --input-placeholder-text-default: {{colors.on_surface.default.rgba | set_alpha: 0.5}};
+  --input-border-default:           {{colors.surface_container_high.default.hex}};
+  --icon-muted:       {{colors.surface_container_highest.default.hex}}   !important;
+  --icon-voice-muted: #fb4934;
+  --icon-default:     {{colors.on_surface.default.hex}};
+  --icon-strong:      {{colors.on_surface.default.hex}};
+  --icon-subtle:      {{colors.on_surface_variant.default.hex}};
+  --scrollbar-thin-thumb:                 {{colors.surface_container_high.default.hex}};
+  --scrollbar-thin-track:                 transparent;
+  --scrollbar-auto-thumb:                 {{colors.surface_container_high.default.hex}};
+  --scrollbar-auto-track:                 {{colors.surface_container_lowest.default.hex}};
+  --scrollbar-auto-scrollbar-color-thumb: {{colors.surface_container_high.default.hex}};
+  --scrollbar-auto-scrollbar-color-track: {{colors.surface_container_lowest.default.hex}};
+  --user-profile-overlay-background:       {{colors.surface_container_low.default.hex}};
+  --user-profile-overlay-background-hover: {{colors.surface_container.default.hex}};
+  --modal-background:        {{colors.surface_container_low.default.hex}} !important;
+  --modal-footer-background: {{colors.surface_container_low.default.hex}};
+  --logo-primary:                  {{colors.on_surface.default.hex}};
+  --__adaptive-focus-ring-color:   {{colors.primary.default.hex}};
+  --textbox-markdown-syntax:       {{colors.outline_variant.default.hex}};
+  --checkbox-border-default:       {{colors.surface_container_highest.default.hex}};
+  --checkbox-icon-active:          {{colors.surface_container_lowest.default.hex}};
+  --radio-thumb-background-active: {{colors.surface_container_lowest.default.hex}};
+  --plum-23:                       {{colors.surface_container_low.default.hex}};
+  --badge-text-brand:              {{colors.surface_container_lowest.default.hex}};
+  --white:     {{colors.on_surface.default.hex}};
+  --white-500: {{colors.on_surface.default.hex}};
+  --black-500: {{colors.surface_container_lowest.default.hex}};
+  --green-360:  #b8bb26;
+  --green-300:  #b8bb26;
+  --yellow-360: #fabd2f;
+  --yellow-300: #fabd2f;
+  --red-400:    #fb4934;
+  --red-430:    #e43729;
+  --red-500:    {{colors.error_container.default.hex}};
+  --blue-500:   {{colors.primary_container.default.hex}};
+  --blue-530:   {{colors.primary.default.hex}};
+  --primary-100: {{colors.on_surface_variant.default.hex}};
+  --primary-200: {{colors.outline.default.hex}};
+  --primary-300: {{colors.on_surface_variant.default.hex}};
+  --primary-400: {{colors.on_surface_variant.default.hex}};
+  --primary-630: {{colors.surface_container.default.hex}};
+  --primary-700: {{colors.surface_container_high.default.hex}};
+  --primary-800: {{colors.surface_container_lowest.default.hex}};
+  --twitch:      {{colors.on_surface_variant.default.hex}};
+  --playstation: {{colors.primary.default.hex}};
+  --spotify:     #b8bb26;
+  --guild-boosting-pink:   {{colors.secondary.default.hex}};
+  --guild-boosting-blue:   {{colors.primary.default.hex}};
+  --guild-boosting-purple: {{colors.on_surface_variant.default.hex}};
+  --premium-perk-yellow:                    #fabd2f;
+  --premium-perk-purple:                    {{colors.on_surface_variant.default.hex}};
+  --premium-perk-dark-blue:                 {{colors.primary.default.hex}};
+  --premium-perk-light-blue:                {{colors.secondary.default.hex}};
+  --premium-perk-blue:                      {{colors.primary.default.hex}};
+  --premium-perk-green:                     #b8bb26;
+  --premium-perk-pink:                      {{colors.on_surface_variant.default.hex}};
+  --premium-perk-orange:                    #fabd2f;
+  --premium-tier-0-blue:                    {{colors.primary.default.hex}};
+  --premium-tier-0-purple:                  {{colors.on_surface_variant.default.hex}};
+  --premium-tier-1-blue-for-gradients:      {{colors.secondary.default.hex}};
+  --premium-tier-1-dark-blue-for-gradients: {{colors.primary.default.hex}};
+  --premium-tier-2-purple-for-gradients:    {{colors.on_surface_variant.default.hex}};
+  --premium-tier-2-purple-for-gradients-2:  {{colors.outline.default.hex}};
+  --premium-tier-2-pink-for-gradients:      {{colors.on_surface_variant.default.hex}};
+}
+
+.visual-refresh.theme-dark :is( button[class*="button_"][class*="lookFilled_"][class*="colorGreen_"], button[class*="colorable_"][class*="join_"]    ), .visual-refresh .theme-dark :is( button[class*="button_"][class*="lookFilled_"][class*="colorGreen_"], button[class*="colorable_"][class*="join_"]    ) {
+  color: {{colors.surface_container_lowest.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark :is( div[class^="item_"][class*="addFriend_"], div[class^="numberBadge_"][style*="background-color: var(--background-feedback-notification);"], div[class^="numberBadge_"][style*="background-color: var(--badge-notification-background);"], div[class*="iconBadge_"][class*="isCurrentUserConnected_"], span[class*="botTag_"], span[class^="unreadPill_"], div[class^="listItem_"] div[class^="wrapper_"] [class*="selected_"], div[class^="icon_"][class*="noIcon_"], button[class^="container_"] > div[class^="icon_"] > svg, div[class^="newBadge_"], button[class*="button_"][class*="lookFilled_"][class*="colorRed_"], button[class*="button_"][class*="lookFilled_"][class*="colorGreen_"], button[class*="button_"][class*="lookFilled_"][class*="colorLink_"], button[class*="button_"][class*="lookFilled_"][class*="colorBrand_"], button[class*="colorable_"][class*="join_"], svg[class^="status_"], svg[class^="dots_"], div[class*="textBadge_"][class*="base_"], svg[class^="descriptionIcon_"], div[class^="uploadDropModal_"], svg[class^="stepIcon_"], svg[class^="activeIcon_"], div[class*="tooltipBrand_"], div[class*="tooltipGreen_"], span[class*="planOptionDiscount_"], div[class*="memberCount_"], svg[class*="flowerStar_"] + div[class*="childContainer_"], div[class*="streamerModeEnabledBtn_"], div[class*="nowPlaying_"], div[class^="pageControlContainer_"],      [class*="notice_"][class*="colorBrand_"],      [class*="colorStreamerMode_"],      [class*="colorSpotify_"],      [class*="colorPremium_"],      [class*="colorPlayStation_"], .interactive:hover    ), .visual-refresh .theme-dark :is( div[class^="item_"][class*="addFriend_"], div[class^="numberBadge_"][style*="background-color: var(--background-feedback-notification);"], div[class^="numberBadge_"][style*="background-color: var(--badge-notification-background);"], div[class*="iconBadge_"][class*="isCurrentUserConnected_"], span[class*="botTag_"], span[class^="unreadPill_"], div[class^="listItem_"] div[class^="wrapper_"] [class*="selected_"], div[class^="icon_"][class*="noIcon_"], button[class^="container_"] > div[class^="icon_"] > svg, div[class^="newBadge_"], button[class*="button_"][class*="lookFilled_"][class*="colorRed_"], button[class*="button_"][class*="lookFilled_"][class*="colorGreen_"], button[class*="button_"][class*="lookFilled_"][class*="colorLink_"], button[class*="button_"][class*="lookFilled_"][class*="colorBrand_"], button[class*="colorable_"][class*="join_"], svg[class^="status_"], svg[class^="dots_"], div[class*="textBadge_"][class*="base_"], svg[class^="descriptionIcon_"], div[class^="uploadDropModal_"], svg[class^="stepIcon_"], svg[class^="activeIcon_"], div[class*="tooltipBrand_"], div[class*="tooltipGreen_"], span[class*="planOptionDiscount_"], div[class*="memberCount_"], svg[class*="flowerStar_"] + div[class*="childContainer_"], div[class*="streamerModeEnabledBtn_"], div[class*="nowPlaying_"], div[class^="pageControlContainer_"],      [class*="notice_"][class*="colorBrand_"],      [class*="colorStreamerMode_"],      [class*="colorSpotify_"],      [class*="colorPremium_"],      [class*="colorPlayStation_"], .interactive:hover    ) {
+  --white:     {{colors.on_surface.default.hex}};
+  --white-500: {{colors.on_surface.default.hex}};
+}
+
+.visual-refresh.theme-dark ::selection, .visual-refresh .theme-dark ::selection {
+  background-color: {{colors.primary.default.rgba | set_alpha: 0.6}};
+}
+
+.visual-refresh.theme-dark button.vc-btn-primary, .visual-refresh .theme-dark button.vc-btn-primary {
+  color: {{colors.on_surface.default.hex}} !important;
+  background-color: {{colors.primary_container.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark button.vc-btn-primary:hover, .visual-refresh.theme-dark button.vc-btn-primary:active, .visual-refresh .theme-dark button.vc-btn-primary:hover, .visual-refresh .theme-dark button.vc-btn-primary:active {
+  background-color: {{colors.primary.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark button.vc-btn-positive, .visual-refresh .theme-dark button.vc-btn-positive {
+  color: {{colors.surface_container_lowest.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark button[class^="button_"][class*=" primary_"], .visual-refresh .theme-dark button[class^="button_"][class*=" primary_"] {
+  color: {{colors.on_surface.default.hex}} !important;
+  background-color: {{colors.primary_container.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark button[class^="button_"][class*=" primary_"]:hover, .visual-refresh.theme-dark button[class^="button_"][class*=" primary_"]:active, .visual-refresh .theme-dark button[class^="button_"][class*=" primary_"]:hover, .visual-refresh .theme-dark button[class^="button_"][class*=" primary_"]:active {
+  background-color: {{colors.primary.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark label[class^="container_"] > div[data-mana-component="switch"], .visual-refresh .theme-dark label[class^="container_"] > div[data-mana-component="switch"] {
+  background-color: {{colors.surface_container_highest.default.hex}} !important;
+  border: unset !important;
+  transition: background-color 0.2s;
+}
+
+.visual-refresh.theme-dark label[class^="container_"] > div[data-mana-component="switch"]:hover, .visual-refresh .theme-dark label[class^="container_"] > div[data-mana-component="switch"]:hover {
+  background-color: {{colors.surface_container_high.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark label[class^="container_"] > div[data-mana-component="switch"] > svg > rect, .visual-refresh .theme-dark label[class^="container_"] > div[data-mana-component="switch"] > svg > rect {
+  fill: {{colors.on_surface.default.hex}};
+  transition: fill 0.2s;
+}
+
+.visual-refresh.theme-dark label[class^="container_"] > div[data-mana-component="switch"]:has(+ span > input:checked), .visual-refresh .theme-dark label[class^="container_"] > div[data-mana-component="switch"]:has(+ span > input:checked) {
+  background-color: {{colors.primary.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark label[class^="container_"] > div[data-mana-component="switch"]:has(+ span > input:checked):hover, .visual-refresh .theme-dark label[class^="container_"] > div[data-mana-component="switch"]:has(+ span > input:checked):hover {
+  background-color: {{colors.primary_container.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark label[class^="container_"] > div[data-mana-component="switch"]:has(+ span > input:checked) > svg > rect, .visual-refresh .theme-dark label[class^="container_"] > div[data-mana-component="switch"]:has(+ span > input:checked) > svg > rect {
+  fill: {{colors.surface_container_lowest.default.hex}};
+}
+
+.visual-refresh.theme-dark div.vc-switch-container, .visual-refresh .theme-dark div.vc-switch-container {
+  --primary-400: {{colors.surface_container_highest.default.hex}};
+}
+
+.visual-refresh.theme-dark div.vc-switch-container svg.vc-switch-slider > rect, .visual-refresh .theme-dark div.vc-switch-container svg.vc-switch-slider > rect {
+  fill: {{colors.on_surface.default.hex}};
+  transition: fill 0.2s;
+}
+
+.visual-refresh.theme-dark div.vc-switch-container.vc-switch-checked > svg.vc-switch-slider > rect, .visual-refresh .theme-dark div.vc-switch-container.vc-switch-checked > svg.vc-switch-slider > rect {
+  fill: {{colors.surface_container_lowest.default.hex}};
+}
+
+#app-mount {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  letter-spacing: -0.01em;
+}
+
+#app-mount [class*="markup"],
+#app-mount [class*="markup"] *,
+#app-mount [class*="messageContent"],
+#app-mount [class*="messageContent"] * {
+  font-family: 'IBM Plex Sans', sans-serif;
+  letter-spacing: 0;
+}
+
+[role="textbox"],
+[role="textbox"] *,
+[data-slate-editor],
+[data-slate-editor] * {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+div[class*="accountProfileCard_"] *,
+div[class*="nameTag_"] *,
+div[class*="customStatus_"] * {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: normal !important;
+}
+
+code,
+pre,
+#app-mount [class*="markup"] code,
+#app-mount [class*="markup"] pre {
+  font-family: 'IBM Plex Mono', monospace !important;
+  background-color: {{colors.surface_container_lowest.default.hex}} !important;
+  border: 1px solid {{colors.surface_container_high.default.hex}} !important;
+}
+
+.visual-refresh.theme-dark.hljs, .visual-refresh .theme-dark.hljs {
+  color: {{colors.on_surface.default.hex}};
+  background: {{colors.surface_container_lowest.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-keyword, .visual-refresh .theme-dark .hljs-keyword {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-built_in, .visual-refresh .theme-dark .hljs-built_in {
+  color: #fb4934;
+}
+
+.visual-refresh.theme-dark .hljs-type, .visual-refresh .theme-dark .hljs-type {
+  color: #fabd2f;
+}
+
+.visual-refresh.theme-dark .hljs-literal, .visual-refresh .theme-dark .hljs-literal {
+  color: {{colors.tertiary_fixed_dim.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-number, .visual-refresh .theme-dark .hljs-number {
+  color: {{colors.tertiary_fixed_dim.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-operator, .visual-refresh .theme-dark .hljs-operator {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-punctuation, .visual-refresh .theme-dark .hljs-punctuation {
+  color: {{colors.on_surface_variant.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-property, .visual-refresh .theme-dark .hljs-property {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-regexp, .visual-refresh .theme-dark .hljs-regexp {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-string, .visual-refresh .theme-dark .hljs-string {
+  color: #b8bb26;
+}
+
+.visual-refresh.theme-dark .hljs-char.escape_, .visual-refresh .theme-dark .hljs-char.escape_ {
+  color: #b8bb26;
+}
+
+.visual-refresh.theme-dark .hljs-subst, .visual-refresh .theme-dark .hljs-subst {
+  color: {{colors.outline.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-symbol, .visual-refresh .theme-dark .hljs-symbol {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-variable, .visual-refresh .theme-dark .hljs-variable {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-variable.language_, .visual-refresh .theme-dark .hljs-variable.language_ {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-variable.constant_, .visual-refresh .theme-dark .hljs-variable.constant_ {
+  color: {{colors.tertiary_fixed_dim.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-title, .visual-refresh .theme-dark .hljs-title {
+  color: {{colors.primary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-title.class_, .visual-refresh .theme-dark .hljs-title.class_ {
+  color: #fabd2f;
+}
+
+.visual-refresh.theme-dark .hljs-title.function_, .visual-refresh .theme-dark .hljs-title.function_ {
+  color: {{colors.primary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-params, .visual-refresh .theme-dark .hljs-params {
+  color: {{colors.on_surface.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-comment, .visual-refresh .theme-dark .hljs-comment {
+  color: {{colors.outline.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-doctag, .visual-refresh .theme-dark .hljs-doctag {
+  color: #fb4934;
+}
+
+.visual-refresh.theme-dark .hljs-meta, .visual-refresh .theme-dark .hljs-meta {
+  color: {{colors.tertiary_fixed_dim.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-section, .visual-refresh .theme-dark .hljs-section {
+  color: {{colors.primary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-tag, .visual-refresh .theme-dark .hljs-tag {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-name, .visual-refresh .theme-dark .hljs-name {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-attr, .visual-refresh .theme-dark .hljs-attr {
+  color: {{colors.primary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-attribute, .visual-refresh .theme-dark .hljs-attribute {
+  color: #b8bb26;
+}
+
+.visual-refresh.theme-dark .hljs-bullet, .visual-refresh .theme-dark .hljs-bullet {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-code, .visual-refresh .theme-dark .hljs-code {
+  color: #b8bb26;
+}
+
+.visual-refresh.theme-dark .hljs-emphasis, .visual-refresh .theme-dark .hljs-emphasis {
+  color: #fb4934;
+  font-style: italic;
+}
+
+.visual-refresh.theme-dark .hljs-strong, .visual-refresh .theme-dark .hljs-strong {
+  color: #fb4934;
+  font-weight: bold;
+}
+
+.visual-refresh.theme-dark .hljs-formula, .visual-refresh .theme-dark .hljs-formula {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-link, .visual-refresh .theme-dark .hljs-link {
+  color: {{colors.primary_fixed_dim.default.hex}};
+  font-style: italic;
+}
+
+.visual-refresh.theme-dark .hljs-quote, .visual-refresh .theme-dark .hljs-quote {
+  color: #b8bb26;
+  font-style: italic;
+}
+
+.visual-refresh.theme-dark .hljs-selector-tag, .visual-refresh .theme-dark .hljs-selector-tag {
+  color: #fabd2f;
+}
+
+.visual-refresh.theme-dark .hljs-selector-id, .visual-refresh .theme-dark .hljs-selector-id {
+  color: {{colors.primary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-selector-class, .visual-refresh .theme-dark .hljs-selector-class {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-selector-attr, .visual-refresh .theme-dark .hljs-selector-attr {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-selector-pseudo, .visual-refresh .theme-dark .hljs-selector-pseudo {
+  color: {{colors.secondary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-template-tag, .visual-refresh .theme-dark .hljs-template-tag {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-template-variable, .visual-refresh .theme-dark .hljs-template-variable {
+  color: {{colors.tertiary.default.hex}};
+}
+
+.visual-refresh.theme-dark .hljs-addition, .visual-refresh .theme-dark .hljs-addition {
+  color: #b8bb26;
+  background: rgba(184, 187, 38, 0.15);
+}
+
+.visual-refresh.theme-dark .hljs-deletion, .visual-refresh .theme-dark .hljs-deletion {
+  color: #fb4934;
+  background: rgba(251, 73, 52, 0.15);
+}
+
+:is(.visual-refresh.theme-dark, .visual-refresh .theme-dark) button[class*="button_"][class*="lookFilled_"][class*="colorBrand_"] {
+  background-color: {{colors.surface_container_low.default.hex}} !important;
+  color: {{colors.on_surface.default.hex}} !important;
+}
+
+:is(.visual-refresh.theme-dark, .visual-refresh .theme-dark) button[class*="button_"][class*="lookFilled_"][class*="colorBrand_"]:hover {
+  background-color: {{colors.primary.default.hex}} !important;
+}
+
+section[class*="panels_"] {
+  background-color: {{colors.surface_container_lowest.default.hex}} !important;
+}
+
+[class^="privateChannels_"] button:has([class^="buttonChildrenWrapper_"]) {
+  background-color: {{colors.surface_container_lowest.default.hex}} !important;
+}
+
+div[class*="reaction_"] {
+  background-color: {{colors.surface_container.default.hex}} !important;
+  border: 1px solid {{colors.surface_container_high.default.hex}} !important;
+}
+
+div[class*="reactionMe_"] {
+  background-color: {{colors.primary.default.rgba | set_alpha: 0.2}} !important;
+  border: 1px solid {{colors.primary.default.hex}} !important;
+}
+
+div[class*="newMessagesBar_"] {
+  background-color: {{colors.primary_container.default.hex}} !important;
+}
+
+.bd-addon-list .bd-addon-card {
+  border: 1px solid {{colors.surface_container_high.default.hex}};
+  background-color: {{colors.surface_container_low.default.hex}};
+  margin-bottom: 18px;
+}

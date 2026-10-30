@@ -1,0 +1,37 @@
+# Run by the quickshell wallpaper switcher (services/Wallpaper.qml).
+# Hooks must not print to stdout: the switcher reads matugen's JSON from it.
+[config]
+
+# Gruvbox hues blended toward the wallpaper, used for kitty's ANSI colors
+[config.custom_colors]
+red = { color = "#cc241d", blend = true }
+green = { color = "#98971a", blend = true }
+yellow = { color = "#d79921", blend = true }
+blue = { color = "#458588", blend = true }
+magenta = { color = "#b16286", blend = true }
+cyan = { color = "#689d6a", blend = true }
+
+# Discord (Equicord) theme; the original gruvbox version is
+# ~/.config/Equicord/themes/MiniShell.gruvbox.css.bak
+[templates.equicord]
+input_path = '~/.config/matugen/templates/MiniShell.css'
+output_path = '~/.config/Equicord/themes/MiniShell.css'
+
+# mango window borders etc.; the original is ~/.config/mango/theme.conf.bak
+[templates.mango]
+input_path = '~/.config/matugen/templates/mango-theme.conf'
+output_path = '~/.config/mango/theme.conf'
+post_hook = 'mmsg dispatch reload_config > /dev/null'
+
+# kitty colors; kitty.conf includes this instead of current-theme.conf.
+# SIGUSR1 makes running kitty windows reload their config.
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-theme.conf'
+output_path = '~/.config/kitty/matugen-theme.conf'
+post_hook = 'pkill -USR1 -x kitty > /dev/null; true'
+
+# spotifast "Minishell Theme"; the original is
+# ~/.config/spotifast/themes/.minishell-gruvbox.json.bak
+[templates.spotifast]
+input_path = '~/.config/matugen/templates/spotifast-theme.json'
+output_path = '~/.config/spotifast/themes/Minishell Theme.json'

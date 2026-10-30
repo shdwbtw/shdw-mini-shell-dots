@@ -1,0 +1,59 @@
+{
+  "programs": [
+    {
+      "command": "cava",
+      "min": [
+        null,
+        null
+      ],
+      "max": [
+        null,
+        null
+      ]
+    },
+    {
+      "command": "unimatrix -s 95 -o -f -c white",
+      "min": [
+        null,
+        null
+      ],
+      "max": [
+        null,
+        null
+      ]
+    },
+    {
+      "command": "momoisay -f",
+      "min": [
+        61,
+        31
+      ],
+      "max": [
+        null,
+        null
+      ]
+    },
+    {
+      "command": "peaclock",
+      "min": [
+        null,
+        null
+      ],
+      "max": [
+        60,
+        15
+      ]
+    },
+    {
+      "command": "~/.cargo/bin/tap {track}",
+      "min": [
+        70,
+        10
+      ],
+      "max": [
+        70,
+        10
+      ]
+    }
+  ]
+}
