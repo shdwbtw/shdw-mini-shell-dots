@@ -3,18 +3,17 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import Quickshell.Services.Pam
-import Quickshell.Wayland
 
 // Lock / power actions. Locking first screenshots every output with grim so
 // the lockscreen can show a blurred copy of the desktop.
 Singleton {
     id: root
 
-    // Lock after this many minutes without input; 0 turns it off.
-    // Apps that inhibit idle (e.g. a playing video) hold it off.
-    property real idleLockMinutes: 5
+    // Idle locking lives in Idle.qml
 
     property bool locked: false
+    // Right after an idle lock: any input unlocks without a password
+    property bool graceActive: false
     property bool authenticating: false
     // bumped per lock so the lockscreen reloads the fresh screenshots
     property int captureId: 0
@@ -28,12 +27,30 @@ Singleton {
         return `file://${shotDir}/qs-lock-${screenName}.png?${captureId}`;
     }
 
-    function lock() {
+    // withGrace: idle locks give Idle.graceSeconds to come back without a password
+    function lock(withGrace) {
         if (locked || capture.running)
             return;
+        pendingGrace = withGrace === true;
         const cmds = Quickshell.screens.map(s => `grim -o '${s.name}' '${shotDir}/qs-lock-${s.name}.png'`);
         capture.command = ["sh", "-c", cmds.join(" & ") + "; wait"];
         capture.running = true;
+    }
+
+    property bool pendingGrace: false
+
+    // Input during the grace period
+    function graceUnlock() {
+        if (!locked || !graceActive)
+            return;
+        graceActive = false;
+        graceTimer.stop();
+        locked = false;
+    }
+
+    onLockedChanged: if (!locked) {
+        graceActive = false;
+        graceTimer.stop();
     }
 
     function unlock(password) {
@@ -60,19 +77,22 @@ Singleton {
         Quickshell.execDetached(["mmsg", "dispatch", "quit"]);
     }
 
-    IdleMonitor {
-        enabled: root.idleLockMinutes > 0 && !root.locked
-        timeout: root.idleLockMinutes * 60
-        respectInhibitors: true
-        onIsIdleChanged: if (isIdle) root.lock()
-    }
-
     Process {
         id: capture
         onExited: {
             root.captureId++;
             root.locked = true;
+            if (root.pendingGrace && Idle.graceSeconds > 0) {
+                root.graceActive = true;
+                graceTimer.restart();
+            }
         }
+    }
+
+    Timer {
+        id: graceTimer
+        interval: Idle.graceSeconds * 1000
+        onTriggered: root.graceActive = false
     }
 
     PamContext {
@@ -110,7 +130,7 @@ Singleton {
         }
         // `qs ipc call session setIdle 5` (0 = off); resets on restart
         function setIdle(minutes: real): void {
-            root.idleLockMinutes = minutes;
+            Idle.lockMinutes = minutes;
         }
     }
 }

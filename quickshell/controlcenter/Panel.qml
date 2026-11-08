@@ -405,31 +405,80 @@ CCView {
 
             Separator {}
 
-            Row {
-                visible: Power.hasBattery
-                spacing: 12
+            // Battery, with the caffeine toggle on the right
+            Item {
+                width: main.width
+                height: Math.max(battery.implicitHeight, caffeine.height)
 
-                BarText {
-                    text: Power.icon
-                    font.pixelSize: 28
-                    color: Power.color
+                Row {
+                    id: battery
+                    visible: Power.hasBattery
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 12
+
+                    BarText {
+                        text: Power.icon
+                        font.pixelSize: 28
+                        color: Power.color
+                    }
+
+                    Column {
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        BarText {
+                            anchors.verticalCenter: undefined
+                            text: `${Power.capacity}%`
+                            font.pixelSize: 18
+                            color: Theme.fgBright
+                        }
+                        BarText {
+                            anchors.verticalCenter: undefined
+                            text: Power.status
+                            font.pixelSize: 11
+                            font.weight: Font.Bold
+                            color: Theme.gray
+                        }
+                    }
                 }
 
-                Column {
-                    anchors.verticalCenter: parent.verticalCenter
+                Rectangle {
+                    id: caffeine
 
-                    BarText {
-                        anchors.verticalCenter: undefined
-                        text: `${Power.capacity}%`
-                        font.pixelSize: 18
-                        color: Theme.fgBright
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: caffeineRow.implicitWidth + 28
+                    height: 34
+                    radius: 17
+                    color: Idle.caffeine ? Theme.accent : caffeineMouse.containsMouse ? Theme.selected : Theme.surfaceAlt
+
+                    Behavior on color {
+                        ColorAnimation { duration: Theme.anim }
                     }
-                    BarText {
-                        anchors.verticalCenter: undefined
-                        text: Power.status
-                        font.pixelSize: 11
-                        font.weight: Font.Bold
-                        color: Theme.gray
+
+                    Row {
+                        id: caffeineRow
+
+                        anchors.centerIn: parent
+                        height: parent.height
+                        spacing: 6
+
+                        BarText {
+                            text: Idle.caffeineIcon
+                            color: Idle.caffeine ? Theme.surface : Theme.fgSoft
+                        }
+                        BarText {
+                            text: "Caffeine"
+                            font.pixelSize: 12
+                            color: Idle.caffeine ? Theme.surface : Theme.fgSoft
+                        }
+                    }
+
+                    MouseArea {
+                        id: caffeineMouse
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: Idle.toggleCaffeine()
                     }
                 }
             }

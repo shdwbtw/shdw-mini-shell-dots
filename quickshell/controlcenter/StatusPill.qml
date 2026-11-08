@@ -110,6 +110,14 @@ CCView {
             onScrolled: dir => Brightness.step(dir * 5)
         }
 
+        // only while caffeine is on, so it's not forgotten
+        StatusItem {
+            visible: Idle.caffeine
+            icon: Idle.caffeineIcon
+            iconColor: Theme.accentBright
+            label: "awake"
+        }
+
         StatusItem {
             visible: Power.hasBattery
             icon: Power.icon

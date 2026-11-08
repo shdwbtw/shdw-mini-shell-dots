@@ -64,7 +64,8 @@ Singleton {
     Connections {
         target: Brightness
         function onPercentChanged() {
-            root.show("brightness");
+            if (!Brightness.quiet)
+                root.show("brightness");
         }
     }
 }

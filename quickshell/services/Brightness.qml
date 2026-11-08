@@ -28,6 +28,39 @@ Singleton {
         set(percent + delta);
     }
 
+    // Idle dimming: remember the level, drop to a fraction of it, restore on
+    // activity. quiet keeps the OSD from popping up for these changes.
+    property bool dimmed: false
+    property int savedPercent: -1
+    property bool quiet: false
+
+    function dim(factor) {
+        if (dimmed || !available)
+            return;
+        savedPercent = percent;
+        dimmed = true;
+        quietly(Math.round(savedPercent * factor));
+    }
+
+    function undim() {
+        if (!dimmed)
+            return;
+        dimmed = false;
+        quietly(savedPercent);
+    }
+
+    function quietly(p) {
+        quiet = true;
+        quietTimer.restart();
+        set(p);
+    }
+
+    Timer {
+        id: quietTimer
+        interval: 1000
+        onTriggered: root.quiet = false
+    }
+
     // Coalesce rapid slider/scroll changes into one brightnessctl call
     Timer {
         id: applyTimer

@@ -5,7 +5,9 @@ import Quickshell.Wayland
 import qs.services
 
 // Session lock: blurred screenshot of the desktop, a block clock and a
-// password field. Locked via Session.lock() (power menu or IPC).
+// password field. Locked via Session.lock() (power menu, IPC or idle). Right
+// after an idle lock, any input within Idle.graceSeconds unlocks without a
+// password.
 WlSessionLock {
     locked: Session.locked
 
@@ -138,10 +140,16 @@ WlSessionLock {
 
                     onAccepted: Session.unlock(text)
                     Keys.onEscapePressed: text = ""
+                    Keys.onPressed: event => {
+                        if (Session.graceActive) {
+                            Session.graceUnlock();
+                            event.accepted = true;
+                        }
+                    }
 
                     Text {
                         anchors.centerIn: parent
-                        visible: input.text === ""
+                        visible: input.text === "" && !Session.graceActive
                         text: field.failed ? "Wrong password" : Session.authenticating ? "Checking…" : "Password"
                         color: field.failed ? Theme.urgentFg : Theme.gray
                         font.family: Theme.font
@@ -150,6 +158,58 @@ WlSessionLock {
                     }
                 }
             }
+        }
+
+        Text {
+            anchors.top: content.bottom
+            anchors.topMargin: 16
+            anchors.horizontalCenter: parent.horizontalCenter
+            opacity: Session.graceActive ? 1 : 0
+            text: `Move or press any key to unlock · ${graceCountdown.left}s`
+            color: Theme.gray
+            font.family: Theme.font
+            font.pixelSize: 13
+            font.weight: Font.Bold
+
+            Behavior on opacity {
+                NumberAnimation { duration: Theme.anim }
+            }
+        }
+
+        Timer {
+            id: graceCountdown
+
+            property int left: Idle.graceSeconds
+
+            running: Session.graceActive
+            interval: 1000
+            repeat: true
+            onRunningChanged: left = Idle.graceSeconds
+            onTriggered: left = Math.max(1, left - 1)
+        }
+
+        // Grace period: catches pointer input over the whole surface. The lock
+        // surface appearing under the cursor can report a position without the
+        // mouse moving, so movement only counts past a few pixels.
+        MouseArea {
+            anchors.fill: parent
+            enabled: Session.graceActive
+            visible: enabled
+            hoverEnabled: true
+            acceptedButtons: Qt.AllButtons
+
+            property point origin: Qt.point(-1, -1)
+
+            onEnabledChanged: origin = Qt.point(-1, -1)
+            onPositionChanged: mouse => {
+                if (origin.x < 0) {
+                    origin = Qt.point(mouse.x, mouse.y);
+                } else if (Math.abs(mouse.x - origin.x) + Math.abs(mouse.y - origin.y) > 8) {
+                    Session.graceUnlock();
+                }
+            }
+            onPressed: Session.graceUnlock()
+            onWheel: Session.graceUnlock()
         }
     }
 }
