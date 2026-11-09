@@ -2,7 +2,8 @@ import QtQuick
 import qs.services
 import qs.modules
 
-// One entry in the Wi-Fi / Bluetooth lists
+// One entry in the Wi-Fi / Bluetooth lists. Right-click reports where, in
+// the row's coordinates, so the panel can open a menu there.
 Rectangle {
     id: root
 
@@ -13,6 +14,7 @@ Rectangle {
     property bool busy: false
     property real strength: 1
     signal clicked
+    signal rightClicked(real x, real y)
 
     width: ListView.view?.width ?? parent.width
     height: 36
@@ -27,8 +29,14 @@ Rectangle {
         id: mouse
         anchors.fill: parent
         hoverEnabled: true
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         cursorShape: Qt.PointingHandCursor
-        onClicked: root.clicked()
+        onClicked: mouse => {
+            if (mouse.button === Qt.RightButton)
+                root.rightClicked(mouse.x, mouse.y);
+            else
+                root.clicked();
+        }
     }
 
     BarText {

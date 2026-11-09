@@ -19,7 +19,7 @@ A [Quickshell](https://quickshell.org) desktop shell for the [mango](https://git
   - output and input device picker
   - per-app volume mixer
   - battery and power profiles, plus a caffeine toggle that turns off dimming, locking and screen-off
-  - Wi-Fi and Bluetooth
+  - Wi-Fi and Bluetooth, with a right-click menu on each network / device (disconnect, forget, auto-connect, copy password, edit; pair, unpair, trust, block, copy address)
 - **Lockscreen**: a blurred screenshot of the desktop behind a block clock, with password authentication through PAM.
 - **Idle**: dims the screen, then locks (only while no audio is playing), then turns the screens off. After an idle lock, any input within 5 seconds unlocks without a password.
 - **Wallpaper theming**: picking a wallpaper sets it with `awww` and runs matugen. The new colors apply to the shell, mango's borders, kitty, a Discord (Equicord) theme and a spotifast theme.
@@ -41,6 +41,7 @@ A [Quickshell](https://quickshell.org) desktop shell for the [mango](https://git
 | BlueZ | Bluetooth list and connections |
 | `brightnessctl` | backlight control |
 | `grim` | screenshot behind the lockscreen |
+| `nmcli` (part of NetworkManager), `wl-clipboard` | Wi-Fi menu: auto-connect, copy password, edit; copying a Bluetooth address |
 | `jq` (and `pw-dump`, part of PipeWire) | checking for playing audio before an idle lock |
 | [awww](https://github.com/LGFae/awww) | wallpaper daemon (`awww-daemon`) |
 | [matugen](https://github.com/InioX/matugen) (4.x) | colors from the wallpaper |

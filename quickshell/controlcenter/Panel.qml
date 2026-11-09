@@ -8,7 +8,8 @@ import qs.services
 import qs.modules
 
 // Expanded control center: tray icons down the left, then volume/brightness
-// sliders, battery + power profiles, and Wi-Fi/Bluetooth tiles with lists
+// sliders, battery + power profiles, and Wi-Fi/Bluetooth tiles with lists.
+// Right-clicking a network or device opens a menu with more actions.
 CCView {
     id: root
 
@@ -30,19 +31,97 @@ CCView {
         if (active) {
             forceActiveFocus();
         } else {
+            menu.close();
             section = "";
             audioDevicesOpen = false;
             mixerOpen = false;
         }
     }
     onSectionChanged: {
+        menu.close();
         pskNetwork = null;
         Net.setScanning(section === "wifi");
         Net.setDiscovering(section === "bt");
     }
     onPskNetworkChanged: if (pskNetwork) pskInput.forceActiveFocus()
 
-    Keys.onEscapePressed: root.closeRequested()
+    Keys.onEscapePressed: menu.opened ? menu.close() : root.closeRequested()
+
+    function openMenu(kind, target, pos) {
+        menu.kind = kind;
+        menu.target = target;
+        menu.title = target.name;
+        if (kind === "wifi" && target.known)
+            Net.inspectSaved(target.name);
+        menu.show(pos.x, pos.y);
+    }
+
+    function wifiMenu(n) {
+        if (!n)
+            return [];
+        const items = [];
+        if (n.connected)
+            items.push({ text: "Disconnect", glyph: Theme.glyph(0xf127), action: () => n.disconnect() });
+        else if (!n.known && Net.isSecured(n))
+            items.push({ text: "Connect with password…", glyph: Theme.glyph(0xf084), action: () => root.pskNetwork = n });
+        else
+            items.push({ text: "Connect", glyph: Theme.glyph(0xf0c1), action: () => n.connect() });
+        if (n.known) {
+            const ready = Net.savedReady && Net.savedSsid === n.name;
+            items.push({
+                text: "Connect automatically",
+                glyph: Theme.glyph(0xf021),
+                checked: ready ? Net.savedAutoconnect : false,
+                enabled: ready,
+                action: () => Net.setAutoconnect(!Net.savedAutoconnect)
+            });
+            if (Net.isSecured(n))
+                items.push({ text: "Copy password", glyph: Theme.glyph(0xf0c5), enabled: ready, action: () => Net.copyPassword() });
+            items.push({
+                text: "Edit in settings",
+                glyph: Theme.glyph(0xf013),
+                enabled: ready,
+                action: () => {
+                    Net.editSaved();
+                    root.closeRequested();
+                }
+            });
+            items.push({ text: "Forget", glyph: Theme.glyph(0xf1f8), danger: true, confirm: true, action: () => n.forget() });
+        }
+        return items;
+    }
+
+    function btMenu(d) {
+        if (!d)
+            return [];
+        const items = [];
+        if (d.pairing)
+            items.push({ text: "Cancel pairing", glyph: Theme.glyph(0xf00d), action: () => d.cancelPair() });
+        else if (!d.paired)
+            items.push({ text: "Pair", glyph: Theme.glyph(0xf0c1), action: () => d.pair() });
+        else if (d.connected)
+            items.push({ text: "Disconnect", glyph: Theme.glyph(0xf127), action: () => d.disconnect() });
+        else
+            items.push({ text: "Connect", glyph: Theme.glyph(0xf0c1), action: () => d.connect() });
+        if (d.paired)
+            items.push({ text: "Trusted", glyph: Theme.glyph(0xf132), checked: d.trusted, action: () => d.trusted = !d.trusted });
+        items.push({ text: "Blocked", glyph: Theme.glyph(0xf05e), checked: d.blocked, action: () => d.blocked = !d.blocked });
+        items.push({ text: "Copy address", glyph: Theme.glyph(0xf0c5), action: () => Net.copyText(d.address, "Address") });
+        if (d.paired || d.bonded)
+            items.push({ text: "Unpair", glyph: Theme.glyph(0xf1f8), danger: true, confirm: true, action: () => d.forget() });
+        return items;
+    }
+
+    ContextMenu {
+        id: menu
+
+        property string kind
+        // QtObject so it goes null if the network/device disappears
+        property QtObject target
+
+        items: kind === "wifi" ? root.wifiMenu(target) : root.btMenu(target)
+        onTargetChanged: if (!target) close()
+    }
 
     Row {
         id: body
@@ -593,6 +672,7 @@ CCView {
                                 else
                                     modelData.connect();
                             }
+                            onRightClicked: (x, y) => root.openMenu("wifi", modelData, mapToItem(root, x, y))
                         }
                     }
 
@@ -706,6 +786,7 @@ CCView {
                                 else
                                     modelData.pair();
                             }
+                            onRightClicked: (x, y) => root.openMenu("bt", modelData, mapToItem(root, x, y))
                         }
                     }
 

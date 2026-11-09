@@ -1,6 +1,7 @@
 pragma Singleton
 import QtQuick
 import Quickshell
+import Quickshell.Io
 import Quickshell.Networking
 import Quickshell.Bluetooth
 
@@ -34,6 +35,69 @@ Singleton {
 
     function isSecured(n) {
         return n.security !== WifiSecurityType.Open && n.security !== WifiSecurityType.Unknown;
+    }
+
+    // Saved-connection details Quickshell doesn't expose, looked up with
+    // nmcli for the network a menu is open on
+    property string savedSsid: ""
+    property string savedUuid: ""
+    property bool savedAutoconnect: true
+    readonly property bool savedReady: savedUuid !== "" && savedSsid !== ""
+
+    function inspectSaved(ssid) {
+        savedSsid = ssid;
+        savedUuid = "";
+        savedAutoconnect = true;
+        savedLookup.running = false;
+        savedLookup.command = ["sh", "-c", `
+            for u in $(nmcli -t -e no -g UUID,TYPE connection show | awk -F: '$2 == "802-11-wireless" { print $1 }'); do
+                if [ "$(nmcli -e no -g 802-11-wireless.ssid connection show uuid "$u")" = "$1" ]; then
+                    echo "$u"
+                    nmcli -e no -g connection.autoconnect connection show uuid "$u"
+                    exit
+                fi
+            done`, "sh", ssid];
+        savedLookup.running = true;
+    }
+
+    function setAutoconnect(on) {
+        if (!savedReady)
+            return;
+        savedAutoconnect = on;
+        Quickshell.execDetached(["nmcli", "connection", "modify", "uuid", savedUuid, "connection.autoconnect", on ? "yes" : "no"]);
+    }
+
+    function copyPassword() {
+        if (!savedReady)
+            return;
+        Quickshell.execDetached(["sh", "-c", `
+            psk=$(nmcli -s -e no -g 802-11-wireless-security.psk connection show uuid "$1")
+            if [ -n "$psk" ]; then
+                printf %s "$psk" | wl-copy
+                notify-send -a Wi-Fi "Password copied" "$2"
+            else
+                notify-send -a Wi-Fi "No password saved" "$2"
+            fi`, "sh", savedUuid, savedSsid]);
+    }
+
+    function editSaved() {
+        if (savedReady)
+            Quickshell.execDetached(["nm-connection-editor", `--edit=${savedUuid}`]);
+    }
+
+    function copyText(text, what) {
+        Quickshell.execDetached(["sh", "-c", 'printf %s "$1" | wl-copy && notify-send -a Bluetooth "$2 copied" "$1"', "sh", text, what]);
+    }
+
+    Process {
+        id: savedLookup
+        stdout: StdioCollector {
+            onStreamFinished: {
+                const [uuid, auto] = text.trim().split("\n");
+                root.savedUuid = uuid ?? "";
+                root.savedAutoconnect = auto !== "no";
+            }
+        }
     }
 
     // --- Bluetooth ---
